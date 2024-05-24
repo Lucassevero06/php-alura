@@ -1,18 +1,6 @@
 <?php
 
-function exibeMensagemLancamento($ano) {
-    if ($ano > 2022) {
-        echo "O filme é Lançamento\n";
-    } elseif ($ano > 2020 && $ano <= 2022) {
-        echo "O filme ainda é novo\n";
-    } else {
-        echo "O filme não é Lançamento\n";
-    }
-}
-
-function incluidoNoPlano($planoPrime, $anoLancamento) {
-    return $planoPrime || $anoLancamento < 2020;
-}
+require __DIR__ . "/funcoes.php"; //chamando funções que estão em outro arquivo
 
 echo "Bem-vindo(a) ao screen match!\n";
 
@@ -55,3 +43,15 @@ $filme = [
 ];
 
 echo $filme["ano"];
+
+var_dump($notas);
+sort($notas); //organiza o array
+var_dump($notas);
+$menorValorArray = min($notas); //retorna o menor valor do array
+var_dump($menorValorArray);
+
+var_dump($filme['nome']);
+$posicaoDoisPontos = strpos($filme['nome'], ':');
+var_dump($posicaoDoisPontos);
+
+var_dump(substr($filme['nome'], 0, $posicaoDoisPontos));
