@@ -4,12 +4,12 @@ echo "Bem-vindo(a) ao screen match!\n";
 
 $nomeFilme = "Top Gun";
 
-$anoLancamento = $argv[1] ?? 2022;
+$anoLancamento = 2022;
 
 $quantidadeDeNotas = $argc - 1;
 $somaDeNotas = 0;
 
-for ($contador = 0; $contador === $quantidadeDeNotas ; $contador++) {
+for ($contador = 1; $contador < $argc ; $contador++) {
     $somaDeNotas += $argv[$contador];
 }
 
