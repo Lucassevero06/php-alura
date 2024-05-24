@@ -7,13 +7,13 @@ $nomeFilme = "Top Gun";
 $anoLancamento = 2022;
 
 $quantidadeDeNotas = $argc - 1;
-$somaDeNotas = 0;
+$notas = [];
 
 for ($contador = 1; $contador < $argc ; $contador++) {
-    $somaDeNotas += $argv[$contador];
+    $notas[] = (float) $argv[$contador];
 }
 
-$notaFilme = $somaDeNotas / $quantidadeDeNotas;
+$notaFilme = array_sum($notas) / $quantidadeDeNotas;
 $planoPrime = true;
 
 $incluidoNoPlano = $planoPrime || $anoLancamento < 2020;
@@ -38,3 +38,12 @@ $genero = match ($nomeFilme) {
 };
 
 echo "Genero do filme é: ".$genero."\n";
+
+$filme = [
+    "nome" => "Thor: Ragnarok",
+    "ano" => "2021",
+    "nota" => 8,
+    "genero" => "heroi",
+];
+
+echo $filme["ano"];
