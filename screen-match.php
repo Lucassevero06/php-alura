@@ -3,8 +3,8 @@
 echo "Bem-vindo(a) ao screen match!\n";
 
 $nomeFilme = "Top Gun";
-$anoLancamento = $argv[1] ?? 2022;
 
+$anoLancamento = $argv[1] ?? 2022;
 $somaDeNotas = 9;
 $somaDeNotas += 6;
 $somaDeNotas += 8;
@@ -21,9 +21,18 @@ echo "Nota do filme: ".$notaFilme."\n";
 echo "Ano de Lançamento:".$anoLancamento."\n";
 
 if ($anoLancamento > 2022) {
-    echo "O filme é Lançamento";
+    echo "O filme é Lançamento\n";
 } elseif ($anoLancamento > 2020 && $anoLancamento <= 2022) {
-    echo "O filme ainda é novo";
+    echo "O filme ainda é novo\n";
 } else {
-    echo "O filme não é Lançamento";
+    echo "O filme não é Lançamento\n";
 }
+
+$genero = match ($nomeFilme) {
+    "Top Gun" => "Ação",
+    "Thor: Ragnarok" => "Heroi",
+    "Se Beber Não Case" => "comedia",
+    default => "Genero desconhecido",
+};
+
+echo "Genero do filme é: ".$genero."\n";
