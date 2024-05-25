@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/funcoes.php"; //chamando funções que estão em outro arquivo
+require __DIR__ . "/src/funcoes.php"; //chamando funções que estão em outro arquivo
 
 echo "Bem-vindo(a) ao screen match!\n";
 
