@@ -10,6 +10,7 @@ class Conta
     {
         echo "Conta Criada com Sucesso!\n";
         $this->cpfTitular = $cpfTitular;
+        $this->validaNomeTitular($nomeTitular);
         $this->nomeTitular = $nomeTitular;
         $this->saldo = 0;
     }
@@ -58,5 +59,13 @@ class Conta
     public function recuperaNomeTitular(): string
     {
         return $this->nomeTitular;
+    }
+
+    private function validaNomeTitular(string $nomeTitular): void
+    {
+        if(strlen($nomeTitular) < 5){
+            echo "Nome precisa ter no minimo 5 caracteres\n";
+            exit();
+        }
     }
 }

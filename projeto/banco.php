@@ -2,7 +2,7 @@
 
 require 'src/Conta.php';
 
-$primeiraConta = new Conta('123.456.789-10', 'Lucas Gabriel');
+$primeiraConta = new Conta('123.456.789-10', 'Luc');
 var_dump($primeiraConta);
 $primeiraConta->deposita(500);
 $primeiraConta->saca(300);
