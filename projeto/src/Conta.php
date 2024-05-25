@@ -2,17 +2,21 @@
 
 class Conta
 {
-    private string $cpfTitular;
-    private string $nomeTitular;
+    private Titular $titular;
     private float $saldo;
+    private static int $numeroDeContas = 0;
 
-    public function __construct(string $cpfTitular, string $nomeTitular) //esse método __construct é acionado assim que é criado um novo objeto, podendo já trazer informaçõs ou pedir informações na hora da criação do novo objeto
+    public function __construct(Titular $titular) //esse método __construct é acionado assim que é criado um novo objeto, podendo já trazer informaçõs ou pedir informações na hora da criação do novo objeto
     {
-        echo "Conta Criada com Sucesso!\n";
-        $this->cpfTitular = $cpfTitular;
-        $this->validaNomeTitular($nomeTitular);
-        $this->nomeTitular = $nomeTitular;
+        $this->titular = $titular;
         $this->saldo = 0;
+
+        self::$numeroDeContas++;
+    }
+
+    public function __destruct() //Quando uma instância deixa de existir, seu método mágico destrutor (__destruct) é executado
+    {
+        self::$numeroDeContas--;
     }
 
     public function saca(float $valorASacar): void
@@ -51,21 +55,18 @@ class Conta
         return $this->saldo;
     }
 
-    public function recuperaCpfTitular(): string
-    {
-        return $this->cpfTitular;
-    }
-
     public function recuperaNomeTitular(): string
     {
-        return $this->nomeTitular;
+        return $this->titular->recuperaNome();
     }
 
-    private function validaNomeTitular(string $nomeTitular): void
+    public function recuperaCpfTitular(): string
     {
-        if(strlen($nomeTitular) < 5){
-            echo "Nome precisa ter no minimo 5 caracteres\n";
-            exit();
-        }
+        return $this->titular->recuperaCpf();
+    }
+
+    public static function recuperaNumeroDeContas(): int
+    {
+        return self::$numeroDeContas;
     }
 }
