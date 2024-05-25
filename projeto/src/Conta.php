@@ -4,7 +4,15 @@ class Conta
 {
     private string $cpfTitular;
     private string $nomeTitular;
-    private float $saldo = 0;
+    private float $saldo;
+
+    public function __construct(string $cpfTitular, string $nomeTitular) //esse método __construct é acionado assim que é criado um novo objeto, podendo já trazer informaçõs ou pedir informações na hora da criação do novo objeto
+    {
+        echo "Conta Criada com Sucesso!\n";
+        $this->cpfTitular = $cpfTitular;
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo = 0;
+    }
 
     public function saca(float $valorASacar): void
     {
@@ -42,19 +50,9 @@ class Conta
         return $this->saldo;
     }
 
-    public function defineCpfTitular(string $cpf): void
-    {
-        $this->cpfTitular = $cpf;
-    }
-
     public function recuperaCpfTitular(): string
     {
         return $this->cpfTitular;
-    }
-
-    public function defineNomeTitular(string $nome): void
-    {
-        $this->nomeTitular = $nome;
     }
 
     public function recuperaNomeTitular(): string

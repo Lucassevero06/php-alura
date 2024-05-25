@@ -2,12 +2,11 @@
 
 require 'src/Conta.php';
 
-$primeiraConta = new Conta();
+$primeiraConta = new Conta('123.456.789-10', 'Lucas Gabriel');
+var_dump($primeiraConta);
 $primeiraConta->deposita(500);
 $primeiraConta->saca(300);
-$primeiraConta->defineCpfTitular('12345678910');
-$primeiraConta->defineNomeTitular('Lucas Gabriel');
 
-echo $primeiraConta->recuperaCpfTitular();
-echo $primeiraConta->recuperaNomeTitular();
-echo $primeiraConta->recuperaSaldo();
+echo $primeiraConta->recuperaNomeTitular() . PHP_EOL;
+echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
+echo $primeiraConta->recuperaSaldo() . PHP_EOL;
