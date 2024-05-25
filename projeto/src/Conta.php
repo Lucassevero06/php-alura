@@ -2,11 +2,11 @@
 
 class Conta
 {
-    private Titular $titular;
-    private float $saldo;
-    private static int $numeroDeContas = 0;
+    private $titular;
+    private $saldo;
+    private static $numeroDeContas = 0;
 
-    public function __construct(Titular $titular) //esse método __construct é acionado assim que é criado um novo objeto, podendo já trazer informaçõs ou pedir informações na hora da criação do novo objeto
+    public function __construct(Titular $titular)
     {
         $this->titular = $titular;
         $this->saldo = 0;
@@ -14,7 +14,7 @@ class Conta
         self::$numeroDeContas++;
     }
 
-    public function __destruct() //Quando uma instância deixa de existir, seu método mágico destrutor (__destruct) é executado
+    public function __destruct()
     {
         self::$numeroDeContas--;
     }
@@ -22,7 +22,7 @@ class Conta
     public function saca(float $valorASacar): void
     {
         if ($valorASacar > $this->saldo) {
-            echo "Saldo indisponivel\n";
+            echo "Saldo indisponível";
             return;
         }
 
@@ -32,7 +32,7 @@ class Conta
     public function deposita(float $valorADepositar): void
     {
         if ($valorADepositar < 0) {
-            echo "Valor precisa ser positivo\n";
+            echo "Valor precisa ser positivo";
             return;
         }
 
@@ -42,7 +42,7 @@ class Conta
     public function transfere(float $valorATransferir, Conta $contaDestino): void
     {
         if ($valorATransferir > $this->saldo) {
-            echo "Saldo indisponivel\n";
+            echo "Saldo indisponível";
             return;
         }
 
