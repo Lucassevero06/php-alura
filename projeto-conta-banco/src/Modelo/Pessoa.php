@@ -2,7 +2,7 @@
 
 namespace Alura\Banco\Modelo;
 
-class Pessoa
+abstract class Pessoa
 {
     protected string $nome;
     private CPF $cpf;
@@ -26,8 +26,8 @@ class Pessoa
 
     protected function validaNomeTitular(string $nomeTitular): void
     {
-        if (strlen($nomeTitular) < 5) {
-            echo "Nome precisa ter pelo menos 5 caracteres";
+        if (strlen($nomeTitular) < 3) {
+            echo "Nome precisa ter pelo menos 3 caracteres";
             exit();
         }
     }
