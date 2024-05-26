@@ -3,7 +3,7 @@
         'name' => 'lucassevero06/buscador-cursos',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'abf5cae7d76a78185393c2eee97c2042a4011393',
+        'reference' => '9de16216999d5d68030826535cb6aba1e1b87fdf',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'lucassevero06/buscador-cursos' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'abf5cae7d76a78185393c2eee97c2042a4011393',
+            'reference' => '9de16216999d5d68030826535cb6aba1e1b87fdf',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
