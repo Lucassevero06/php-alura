@@ -1,5 +1,6 @@
 <?php
 
+use Calculos\CalculadoraDeMaratona;
 use Modelo\Filme;
 use Modelo\Genero;
 use Modelo\Serie;
@@ -44,3 +45,10 @@ echo $serie->anoLancamento . "\n";
 $serie->avalia(8);
 
 echo $serie->media() . "\n";
+
+$calculadora = new CalculadoraDeMaratona();
+$calculadora->inclui($filme);
+$calculadora->inclui($serie);
+$duracao = $calculadora->duracao();
+
+echo "Para essa maratona, você precisa de $duracao minutos \n";
