@@ -5,7 +5,9 @@ namespace Modelo;
 class Filme
 {
     public string $nome;
-    public string $anoLancamento;
+    public int $anoLancamento;
     public string $genero;
-    
+    public float $nota;
+
+
 }
