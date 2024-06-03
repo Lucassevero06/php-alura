@@ -2,33 +2,17 @@
 
 namespace Modelo;
 
-class Serie
+class Serie extends Titulo
 {
-
-    private array $notas;
-
     public function __construct(
-        public readonly string $nome,
-        public readonly int $anoLancamento,
-        public readonly Genero $genero,
-        public int $temporadas,
-        public int $episodiosPorTemporadas,
-        public int $episodiosPorTemporada
+        string $nome,
+        int $anoLancamento,
+        Genero $genero,
+        public readonly int $temporadas,
+        public readonly int $episodiosPorTemporadas,
+        public readonly int $minutosPorEpisodio
     )
     {
-        $this->notas = [];
-    }
-
-    public function avalia(float $nota): void
-    {
-        $this->notas[] = $nota;
-    }
-
-    public function media(): float
-    {
-        $somaNotas = array_sum($this->notas);
-        $quantidadeNotas = count($this->notas);
-
-        return $somaNotas / $quantidadeNotas;
+    parent::__construct($nome, $anoLancamento, $genero);
     }
 }
