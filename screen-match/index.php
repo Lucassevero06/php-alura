@@ -1,11 +1,13 @@
 <?php
 
 use Calculos\CalculadoraDeMaratona;
+use Calculos\ConversorNotaEstrela;
 use Modelo\Episodio;
 use Modelo\Filme;
 use Modelo\Genero;
 use Modelo\Serie;
 
+require __DIR__ . "/src/Modelo/Avaliavel.php";
 require __DIR__ . "/src/Modelo/Genero.php";
 require __DIR__ . "/src/Modelo/Titulo.php";
 require __DIR__ . "/src/Modelo/Filme.php";
@@ -59,3 +61,7 @@ $calculadora->inclui($serie);
 $duracao = $calculadora->duracao();
 
 echo "Para essa maratona, você precisa de $duracao minutos \n";
+
+$conversor = new ConversorNotaEstrela();
+echo $conversor->converte($serie) . "/n";
+echo $conversor->converte($filme) . "/n";

@@ -3,13 +3,13 @@
 namespace Calculos;
 
 
+use Modelo\Avaliavel;
+
 class ConversorNotaEstrela
 {
     public function converte(Avaliavel $avaliavel): float
     {
         $nota = $avaliavel->media();
-
-        // realiza conversão
 
         return round($nota) / 2;
     }
