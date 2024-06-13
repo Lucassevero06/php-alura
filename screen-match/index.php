@@ -1,6 +1,7 @@
 <?php
 
 use Calculos\CalculadoraDeMaratona;
+use Modelo\Episodio;
 use Modelo\Filme;
 use Modelo\Genero;
 use Modelo\Serie;
@@ -9,6 +10,7 @@ require __DIR__ . "/src/Modelo/Genero.php";
 require __DIR__ . "/src/Modelo/Titulo.php";
 require __DIR__ . "/src/Modelo/Filme.php";
 require __DIR__ . "/src/Modelo/Serie.php";
+require __DIR__ . "/src/Modelo/Episodio.php";
 require __DIR__ . "/src/Calculos/CalculadoraDeMaratona.php";
 
 echo "Bem-vindo(a) ao ScreenMatch";
@@ -38,6 +40,11 @@ $serie = new Serie(
     10,
     20,
     30
+);
+$episodio = new Episodio(
+    $serie,
+    'episodio 01',
+    1
 );
 
 echo $serie->anoLancamento . "\n";
