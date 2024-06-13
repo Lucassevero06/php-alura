@@ -1,6 +1,6 @@
 <?php
 
-namespace Modelo;
+namespace ScreenMatch\Modelo;
 
 enum Genero
 {

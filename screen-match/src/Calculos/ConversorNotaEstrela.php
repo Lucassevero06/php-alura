@@ -1,9 +1,8 @@
 <?php
 
-namespace Calculos;
+namespace ScreenMatch\Calculos;
 
-
-use Modelo\Avaliavel;
+use ScreenMatch\Modelo\Avaliavel;
 
 class ConversorNotaEstrela
 {
