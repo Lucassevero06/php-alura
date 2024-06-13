@@ -14,6 +14,7 @@ require __DIR__ . "/src/Modelo/Filme.php";
 require __DIR__ . "/src/Modelo/Serie.php";
 require __DIR__ . "/src/Modelo/Episodio.php";
 require __DIR__ . "/src/Calculos/CalculadoraDeMaratona.php";
+require __DIR__ . "/src/Calculos/ConversorNotaEstrela.php";
 
 echo "Bem-vindo(a) ao ScreenMatch";
 
@@ -63,5 +64,5 @@ $duracao = $calculadora->duracao();
 echo "Para essa maratona, você precisa de $duracao minutos \n";
 
 $conversor = new ConversorNotaEstrela();
-echo $conversor->converte($serie) . "/n";
-echo $conversor->converte($filme) . "/n";
+echo $conversor->converte($serie) . "\n";
+echo $conversor->converte($filme) . "\n";
