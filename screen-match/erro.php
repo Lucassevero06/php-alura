@@ -7,6 +7,7 @@ use ScreenMatch\Modelo\{
 use ScreenMatch\Calculos\{
     CalculadoraDeMaratona, ConversorNotaEstrela
 };
+use ScreenMatch\Exception\NotaInvalidaException;
 
 require 'autoload.php';
 
@@ -25,7 +26,12 @@ $episodio = new Episodio(
     1
 );
 
-//$episodio->avalia(10);
+try {
+    $episodio->avalia(45);
+    $episodio->avalia(-35);
+    $conversor = new ConversorNotaEstrela();
+    echo $conversor->converte($episodio);
+} catch (NotaInvalidaException $e) {
+    echo "Um problema aconteceu: " . $e->getMessage();
+}
 
-$conversor = new ConversorNotaEstrela();
-echo $conversor->converte($episodio);

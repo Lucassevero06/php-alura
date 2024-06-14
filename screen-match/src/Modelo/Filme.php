@@ -2,8 +2,6 @@
 
 namespace ScreenMatch\Modelo;
 
-use Override;
-
 class Filme extends Titulo
 {
     public function __construct(
@@ -15,7 +13,7 @@ class Filme extends Titulo
         parent::__construct($nome, $anoLancamento, $genero);
     }
 
-    #[Override]
+    #[\Override]
     public function duracaoEmMinutos(): int
     {
         return $this->duracaoEmMinutos;

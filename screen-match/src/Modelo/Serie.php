@@ -2,8 +2,6 @@
 
 namespace ScreenMatch\Modelo;
 
-use Override;
-
 class Serie extends Titulo
 {
     public function __construct(
@@ -18,7 +16,7 @@ class Serie extends Titulo
     parent::__construct($nome, $anoLancamento, $genero);
     }
 
-    #[Override]
+    #[\Override]
     public function duracaoEmMinutos(): int
     {
         return $this->temporadas * $this->episodiosPorTemporada * $this->minutosPorEpisodio;
