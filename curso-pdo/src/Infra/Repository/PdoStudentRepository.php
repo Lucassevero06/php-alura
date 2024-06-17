@@ -4,7 +4,10 @@ namespace Alura\Pdo\Infra\Repository;
 
 use Alura\Pdo\Domain\Model\Student;
 use Alura\Pdo\Domain\Repository\StudentRepository;
+use DateTimeImmutable;
+use http\Exception\RuntimeException;
 use PDO;
+use PDOStatement;
 
 class PdoStudentRepository implements StudentRepository
 {
@@ -32,7 +35,7 @@ class PdoStudentRepository implements StudentRepository
         return $this->hydrateStudentList($stmt);
     }
 
-    private function hydrateStudentList(\PDOStatement $stmt): array
+    private function hydrateStudentList(PDOStatement $stmt): array
     {
        $studentDataList = $stmt->fetchAll(PDO::FETCH_ASSOC);
        $studentList = [];
@@ -41,7 +44,7 @@ class PdoStudentRepository implements StudentRepository
             $studentList[] = new Student(
                 $studentData['id'],
                 $studentData['name'],
-                new \DateTimeImmutable($studentData['birth_date'])
+                new DateTimeImmutable($studentData['birth_date'])
             );
         }
 
@@ -61,6 +64,9 @@ class PdoStudentRepository implements StudentRepository
     {
         $insertQuery = 'INSERT INTO students (name, birth_date) VALUES (:name, :birth_date);';
         $stmt = $this->connection->prepare($insertQuery);
+        if ($stmt === false) {
+            throw new \RuntimeException('Erro na query do banco');
+        }
 
         $sucess = $stmt->execute([
             ':name' => $student->name(),
