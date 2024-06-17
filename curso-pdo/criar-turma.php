@@ -18,7 +18,6 @@ $aStudent = new Student(
     'Nico Steppat',
     new DateTimeImmutable('1985-05-01'),
 );
-
 $studentRepository->save($aStudent);
 
 $anotherStudent = new Student(
@@ -26,7 +25,6 @@ $anotherStudent = new Student(
     'Sergio',
     new DateTimeImmutable('1985-05-01'),
 );
-
 $studentRepository->save($anotherStudent);
 
 $connection->rollBack();
