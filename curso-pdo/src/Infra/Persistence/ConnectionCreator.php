@@ -6,6 +6,7 @@ use PDO;
 
 class ConnectionCreator
 {
+
     public static function createConnection(): PDO
     {
         $caminhoBanco = __DIR__ . '/../../../banco.sqlite';
