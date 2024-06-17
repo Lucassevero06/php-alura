@@ -2,7 +2,7 @@
 
 namespace Alura\Pdo\Domain\Model;
 
-class Student
+class Student //uma entidade
 {
     private ?int $id;
     private string $name;
@@ -15,6 +15,15 @@ class Student
         $this->birthDate = $birthDate;
     }
 
+    public function defineId(int $id): void
+    {
+        if (!is_null($this->id)) {
+            throw new \DomainException('Voce só pode definir ID uma vez');
+        }
+
+        $this->id = $id;
+    }
+
     public function id(): ?int
     {
         return $this->id;
@@ -23,6 +32,11 @@ class Student
     public function name(): string
     {
         return $this->name;
+    }
+
+    public function changeName(string $newName): void
+    {
+        $this->name = $newName;
     }
 
     public function birthDate(): \DateTimeInterface
