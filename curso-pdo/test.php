@@ -1,9 +1,9 @@
 <?php
 
 use Alura\Pdo\Domain\Repository\StudentRepository;
+use Alura\Pdo\Infra\PdoStudentRepository;
 
-function enviaEmail(StudentRepository $studentRepository)
-{
-    $studentList = $studentRepository->studentsBirthAt(new \DateTimeImmutable());
+$pdo = new PDO('sqlite::memory');
+$repository = new PdoStudentRepository($pdo);
 
-}
+empty($repository->allStudents());
