@@ -7,8 +7,18 @@ require_once 'vendor/autoload.php';
 $databasePath = __DIR__ . '/banco.sqlite';
 $pdo = new PDO('sqlite:' . $databasePath);
 
-$student = new Student(null, 'Vinicius Dias', new \DateTimeImmutable('1997-10-15'));
+$student = new Student(
+    null,
+    'Sla',
+    new \DateTimeImmutable('2000-06-06')
+);
+//$name = $student->name();
 
-$sqlInsert = "INSERT INTO students (name, birth_date) VALUES ('{$student->name()}', '{$student->birthDate()->format('Y-m-d')}');";
+$sqlInsert = "INSERT INTO students (name, birth_date) VALUES (:name, :birth_date);"; //parametros SQL
+$statement = $pdo->prepare($sqlInsert);
+$statement->bindValue(':name', $student->name()); // uma forma de segurança contra SQL injections, evitando problemas com SQL
+$statement->bindValue(':birth_date', $student->birthDate()->format('Y-m-d'));
 
-var_dump($pdo->exec($sqlInsert));
+if ($statement->execute()) {
+    echo "Aluno incluido";
+}
