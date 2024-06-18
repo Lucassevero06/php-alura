@@ -14,3 +14,5 @@ $studentList = $repository->studentsWithPhones();
 
 echo $studentList[1]->phones()[0]->formattedPhone();
 var_dump($studentList);
+
+//projeto finalizado
