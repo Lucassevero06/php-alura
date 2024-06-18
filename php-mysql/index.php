@@ -1,17 +1,12 @@
 <?php
 
 require_once 'src/conexao-bd.php';
+require_once 'src/Modelo/Produto.php';
+require_once 'src/Repositorio/ProdutoRepositorio.php';
 
-$sql1 = "SELECT * FROM produtos WHERE tipo = 'Café' ORDER BY preco"; //organizando os dados
-$statement = $pdo->query($sql1);
-$produtosCafe = $statement->fetchAll(PDO::FETCH_ASSOC); // trazendo os dados do banco de dados MYSQL
-
-//var_dump($produtosCafe);
-//exit();
-
-$sql2 = "SELECT * FROM produtos WHERE tipo = 'Almoço' ORDER BY preco"; //organizando os dados
-$statement = $pdo->query($sql2);
-$produtosAlmoco = $statement->fetchAll(PDO::FETCH_ASSOC); // trazendo os dados do banco de dados MYSQL
+$produtosRepositorio = new ProdutoRepositorio($pdo);
+$dadosCafe = $produtosRepositorio->opcoesCafe();
+$dadosAlmoco = $produtosRepositorio->opcoesAlmoco();
 
 ?>
 <!doctype html>
@@ -44,14 +39,14 @@ $produtosAlmoco = $statement->fetchAll(PDO::FETCH_ASSOC); // trazendo os dados d
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-cafe-manha-produtos">
-                <?php foreach ($produtosCafe as $cafe): ?> <!--loop de repetição para trazer os produtos de forma dinamica-->
+                <?php foreach ($dadosCafe as $cafe): ?> <!--loop de repetição para trazer os produtos de forma dinamica-->
                     <div class="container-produto">
                         <div class="container-foto">
-                            <img src="<?= 'img/'.$cafe['imagem'] ?>">
+                            <img src="<?= $cafe->getImagem() ?>">
                         </div>
-                        <p><?= $cafe['nome'] ?></p>
-                        <p><?= $cafe['descricao'] ?></p>
-                        <p>R$ <?= $cafe['preco'] ?></p>
+                        <p><?= $cafe->getNome() ?></p>
+                        <p><?= $cafe->getDescricao() ?></p>
+                        <p>R$ <?= $cafe->getPrecoFormatado() ?></p>
                     </div>
                 <?php endforeach; ?> <!--loop de repetição para trazer os produtos de forma dinamica-->
             </div>
@@ -62,14 +57,14 @@ $produtosAlmoco = $statement->fetchAll(PDO::FETCH_ASSOC); // trazendo os dados d
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-almoco-produtos">
-                <?php foreach ($produtosAlmoco as $almoco): ?><!--loop de repetição para trazer os produtos de forma dinamica-->
+                <?php foreach ($dadosAlmoco as $almoco): ?><!--loop de repetição para trazer os produtos de forma dinamica-->
                     <div class="container-produto">
                         <div class="container-foto">
-                            <img src="<?= 'img/'.$almoco['imagem'] ?>">
+                            <img src="<?= $almoco->getImagem() ?>">
                         </div>
-                        <p><?= $almoco['nome'] ?></p>
-                        <p><?= $almoco['descricao'] ?></p>
-                        <p>R$ <?= $almoco['preco'] ?></p>
+                        <p><?= $almoco->getNome() ?></p>
+                        <p><?= $almoco->getDescricao() ?></p>
+                        <p>R$ <?= $almoco->getPrecoFormatado() ?></p>
                     </div>
                 <?php endforeach; ?><!--loop de repetição para trazer os produtos de forma dinamica-->
             </div>
