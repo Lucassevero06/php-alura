@@ -25,32 +25,32 @@
             'imagem' => "img/cafe-gelado.jpg"
         ]
     ];
-$produtosAlmoco = [
-    [
-        "nome" => "Bife",
-        "descricao" => "Bife, arroz com feijão e uma deliciosa batata frita",
-        "preco" => "27.90",
-        "imagem" => "img/bife.jpg"
-    ],
-    [
-        "nome" => "Filé de peixe",
-        "descricao" => "Filé de peixe salmão assado, arroz, feijão verde e tomate.",
-        "preco" => "24.99",
-        "imagem" => "img/prato-peixe.jpg"
-    ],
-    [
-        "nome" => "Frango",
-        "descricao" => "Saboroso frango à milanesa com batatas fritas, salada de repolho e molho picante",
-        "preco" => "23.00",
-        "imagem" => "img/prato-frango.jpg"
-    ],
-    [
-        "nome" => "Fettuccine",
-        "descricao" => "Prato italiano autêntico da massa do fettuccine com peito de frango grelhado",
-        "preco" => "22.50",
-        "imagem" => "img/fettuccine.jpg"
-    ]
-];
+    $produtosAlmoco = [
+        [
+            "nome" => "Bife",
+            "descricao" => "Bife, arroz com feijão e uma deliciosa batata frita",
+            "preco" => "27.90",
+            "imagem" => "img/bife.jpg"
+        ],
+        [
+            "nome" => "Filé de peixe",
+            "descricao" => "Filé de peixe salmão assado, arroz, feijão verde e tomate.",
+            "preco" => "24.99",
+            "imagem" => "img/prato-peixe.jpg"
+        ],
+        [
+            "nome" => "Frango",
+            "descricao" => "Saboroso frango à milanesa com batatas fritas, salada de repolho e molho picante",
+            "preco" => "23.00",
+            "imagem" => "img/prato-frango.jpg"
+        ],
+        [
+            "nome" => "Fettuccine",
+            "descricao" => "Prato italiano autêntico da massa do fettuccine com peito de frango grelhado",
+            "preco" => "22.50",
+            "imagem" => "img/fettuccine.jpg"
+        ]
+    ];
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -100,7 +100,7 @@ $produtosAlmoco = [
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-almoco-produtos">
-                <?php foreach ($produtosAlmoco as $almoco): ?>
+                <?php foreach ($produtosAlmoco as $almoco): ?><!--loop de repetição para trazer os produtos de forma dinamica-->
                     <div class="container-produto">
                         <div class="container-foto">
                             <img src="<?= $almoco['imagem'] ?>">
@@ -109,7 +109,7 @@ $produtosAlmoco = [
                         <p><?= $almoco['descricao'] ?></p>
                         <p>R$ <?= $almoco['preco'] ?></p>
                     </div>
-                <?php endforeach; ?>
+                <?php endforeach; ?><!--loop de repetição para trazer os produtos de forma dinamica-->
             </div>
 
         </section>
