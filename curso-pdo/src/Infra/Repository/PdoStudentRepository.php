@@ -98,7 +98,7 @@ class PdoStudentRepository implements StudentRepository
     public function studentsWithPhones(): array
     {
         $sqlQuery = 'SELECT students.id,
-                            students.nome,
+                            students.name,
                             students.birth_date,
                             phones.id AS phone_id,
                             phones.area_code,
@@ -113,10 +113,16 @@ class PdoStudentRepository implements StudentRepository
 
         foreach ($result as $row) {
             if (!array_key_exists($row['id'], $studentList)) {
-                $studentList[$row]
+                $studentList[$row['id']] = new Student(
+                    $row['id'],
+                    $row['name'],
+                    new \DateTimeImmutable($row['birth_date']),
+                );
             }
                 $phone = new Phone($row['phone_id'], $row['area_code'], $row['number']);
                 $studentList[$row['id']]->addPhone($phone);
         }
+
+        return $studentList;
     }
 }
