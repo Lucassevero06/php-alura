@@ -1,14 +1,17 @@
 <?php
 
-require_once 'src/conexao-bd.php';
-require_once 'src/Modelo/Produto.php';
-require_once 'src/Repositorio/ProdutoRepositorio.php';
+require "src/conexao-bd.php";
+require "src/Modelo/Produto.php";
+require "src/Repositorio/ProdutoRepositorio.php";
 
 $produtosRepositorio = new ProdutoRepositorio($pdo);
 $dadosCafe = $produtosRepositorio->opcoesCafe();
 $dadosAlmoco = $produtosRepositorio->opcoesAlmoco();
 
+
+
 ?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -26,50 +29,50 @@ $dadosAlmoco = $produtosRepositorio->opcoesAlmoco();
     <title>Serenatto - Cardápio</title>
 </head>
 <body>
-    <main>
-        <section class="container-banner">
-            <div class="container-texto-banner">
-                <img src="img/logo-serenatto.png" class="logo" alt="logo-serenatto">
-            </div>
-        </section>
-        <h2>Cardápio Digital</h2>
-        <section class="container-cafe-manha">
-            <div class="container-cafe-manha-titulo">
-                <h3>Opções para o Café</h3>
-                <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
-            </div>
-            <div class="container-cafe-manha-produtos">
-                <?php foreach ($dadosCafe as $cafe): ?> <!--loop de repetição para trazer os produtos de forma dinamica-->
-                    <div class="container-produto">
-                        <div class="container-foto">
-                            <img src="<?= $cafe->getImagem() ?>">
-                        </div>
-                        <p><?= $cafe->getNome() ?></p>
-                        <p><?= $cafe->getDescricao() ?></p>
-                        <p>R$ <?= $cafe->getPrecoFormatado() ?></p>
+<main>
+    <section class="container-banner">
+        <div class="container-texto-banner">
+            <img src="img/logo-serenatto.png" class="logo" alt="logo-serenatto">
+        </div>
+    </section>
+    <h2>Cardápio Digital</h2>
+    <section class="container-cafe-manha">
+        <div class="container-cafe-manha-titulo">
+            <h3>Opções para o Café</h3>
+            <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
+        </div>
+        <div class="container-cafe-manha-produtos">
+            <?php foreach ($dadosCafe as $cafe):?>
+                <div class="container-produto">
+                    <div class="container-foto">
+                        <img src="<?= $cafe->getImagemDiretorio() ?>">
                     </div>
-                <?php endforeach; ?> <!--loop de repetição para trazer os produtos de forma dinamica-->
-            </div>
-        </section>
-        <section class="container-almoco">
-            <div class="container-almoco-titulo">
-                <h3>Opções para o Almoço</h3>
-                <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
-            </div>
-            <div class="container-almoco-produtos">
-                <?php foreach ($dadosAlmoco as $almoco): ?><!--loop de repetição para trazer os produtos de forma dinamica-->
-                    <div class="container-produto">
-                        <div class="container-foto">
-                            <img src="<?= $almoco->getImagem() ?>">
-                        </div>
-                        <p><?= $almoco->getNome() ?></p>
-                        <p><?= $almoco->getDescricao() ?></p>
-                        <p>R$ <?= $almoco->getPrecoFormatado() ?></p>
+                    <p><?= $cafe->getNome()?></p>
+                    <p><?= $cafe->getDescricao()?></p>
+                    <p><?= $cafe->getPrecoFormatado() ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+    <section class="container-almoco">
+        <div class="container-almoco-titulo">
+            <h3>Opções para o Almoço</h3>
+            <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
+        </div>
+        <div class="container-almoco-produtos">
+            <?php foreach ($dadosAlmoco as $almoco):?>
+                <div class="container-produto">
+                    <div class="container-foto">
+                        <img src="<?= $almoco->getImagemDiretorio()?>">
                     </div>
-                <?php endforeach; ?><!--loop de repetição para trazer os produtos de forma dinamica-->
-            </div>
+                    <p><?= $almoco->getNome()?></p>
+                    <p><?= $almoco->getDescricao()?></p>
+                    <p><?= $almoco->getPrecoFormatado() ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
-        </section>
-    </main>
+    </section>
+</main>
 </body>
 </html>
