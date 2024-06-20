@@ -9,7 +9,7 @@ $statement = $pdo->prepare($sql);
 $statement->bindValue(1, $id);
 
 if ($statement->execute() === false) {
-    header('Location: /listagem-videos.php'); //redirecionamento de page
+    header('Location: /?sucesso=0');
 } else {
-    header('Location: /listagem-videos.php');
+    header('Location: /?sucesso=1');
 }
