@@ -1,16 +1,15 @@
 <?php
 
-namespace Alura\Mvc\Entity;
+declare(strict_types=1);
 
-use http\Exception\InvalidArgumentException;
+namespace Alura\Mvc\Entity;
 
 class Video
 {
     public readonly int $id;
     public readonly string $url;
 
-    public function __construct
-    (
+    public function __construct(
         string $url,
         public readonly string $title,
     ) {
@@ -20,7 +19,7 @@ class Video
     private function setUrl(string $url)
     {
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
-            throw new InvalidArgumentException();
+            throw new \InvalidArgumentException();
         }
 
         $this->url = $url;
@@ -30,5 +29,4 @@ class Video
     {
         $this->id = $id;
     }
-    
 }

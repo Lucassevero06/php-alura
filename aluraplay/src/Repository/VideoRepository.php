@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Alura\Mvc\Repository;
 
 use Alura\Mvc\Entity\Video;
@@ -22,6 +24,7 @@ class VideoRepository
         $id = $this->pdo->lastInsertId();
 
         $video->setId(intval($id));
+
         return $result;
     }
 
@@ -34,7 +37,7 @@ class VideoRepository
         return $statement->execute();
     }
 
-    public function update(Video $video): void
+    public function update(Video $video): bool
     {
         $sql = 'UPDATE videos SET url = :url, title = :title WHERE id = :id;';
         $statement = $this->pdo->prepare($sql);
@@ -43,9 +46,8 @@ class VideoRepository
         $statement->bindValue(':title', $video->title);
         $statement->bindValue(':id', $video->id, PDO::PARAM_INT);
 
-        $statement->execute();
+        return $statement->execute();
     }
-
 
     /**
      * @return Video[]
@@ -54,15 +56,27 @@ class VideoRepository
     {
         $videoList = $this->pdo
             ->query('SELECT * FROM videos;')
-            ->fetchAll(PDO::FETCH_ASSOC);
+            ->fetchAll(\PDO::FETCH_ASSOC);
         return array_map(
-            function (array $videoData) {
-                $video = new Video($videoData['url'], $videoData['title']);
-                $video->setId($videoData['id']);
-
-                return $video;
-            },
+            $this->hydrateVideo(...),
             $videoList
         );
+    }
+
+    public function find(int $id)
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM videos WHERE id = ?;');
+        $statement->bindValue(1, $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $this->hydrateVideo($statement->fetch(\PDO::FETCH_ASSOC));
+    }
+
+    private function hydrateVideo(array $videoData): Video
+    {
+        $video = new Video($videoData['url'], $videoData['title']);
+        $video->setId($videoData['id']);
+
+        return $video;
     }
 }

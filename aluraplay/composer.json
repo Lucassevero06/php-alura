@@ -1,11 +1,11 @@
 {
-  "autoload": {
-    "psr-4": {
-      "Alura\\Mvc\\": "src/"
+    "autoload": {
+        "psr-4": {
+            "Alura\\Mvc\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">8.1",
+        "ext-pdo": "*"
     }
-  },
-  "require": {
-    "ext-pdo": "*",
-    "ext-http": "*"
-  }
 }
