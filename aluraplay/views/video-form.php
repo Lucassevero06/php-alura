@@ -1,10 +1,6 @@
 <?php
-
-use Alura\Mvc\Entity\Video;
-
-require_once __DIR__ . '/inicio-html.php';
-/** @var ?Video|null $video */
-
+$this->layout('layout');
+/** @var \Alura\Mvc\Entity\Video|null $video */
 ?>
 <main class="container">
     <form class="container__formulario"
@@ -32,7 +28,7 @@ require_once __DIR__ . '/inicio-html.php';
         </div>
 
         <div class="formulario__campo">
-            <label class="campo__etiqueta" for="image">Imagem do video</label>
+            <label class="campo__etiqueta" for="image">Imagem do vídeo</label>
             <input name="image"
                    accept="image/*"
                    type="file"
@@ -43,5 +39,3 @@ require_once __DIR__ . '/inicio-html.php';
         <input class="formulario__botao" type="submit" value="Enviar" />
     </form>
 </main>
-
-<?php require_once __DIR__ . '/fim-html.php';
