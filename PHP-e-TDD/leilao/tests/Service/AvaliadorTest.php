@@ -17,15 +17,8 @@ class AvaliadorTest extends TestCase
         $lucas = new Usuario('Lucas');
         $joao = new Usuario('Joao');
 
-        $leilao->recebeLance(new Lance(
-            $joao,
-            2000
-        ));
-
-        $leilao->recebeLance(new Lance(
-            $lucas,
-            2500
-        ));
+        $leilao->recebeLance(new Lance($joao, 2000));
+        $leilao->recebeLance(new Lance($lucas, 2500));
 
         $leiloeiro = new Avaliador();
 
@@ -57,5 +50,47 @@ class AvaliadorTest extends TestCase
 
         // A verificação do resultado (Assert ou Then)
         self::assertEquals(2500, $maiorValor); //verifica se dois valores são iguais
+    }
+
+    public function testAvaliadorDeveEncontrarOMenorValorDeLancesEmOrdemDecrescente()
+    {
+        // A inicialização do cenário (Arrange ou Given)
+        $leilao = new Leilao('Fiat 147 0km');
+        $lucas = new Usuario('Lucas');
+        $joao = new Usuario('Joao');
+
+        $leilao->recebeLance(new Lance($lucas, 2500));
+        $leilao->recebeLance(new Lance($joao, 2000));
+
+        $leiloeiro = new Avaliador();
+
+        // A execução da regra de negócio (Act ou When)
+        $leiloeiro->avalia($leilao);
+
+        $menorValor = $leiloeiro->getMenorValor();
+
+        // A verificação do resultado (Assert ou Then)
+        self::assertEquals(2000, $menorValor); //verifica se dois valores são iguais
+    }
+
+    public function testAvaliadorDeveEncontrarOMenorValorDeLancesEmOrdemCrescente()
+    {
+        // A inicialização do cenário (Arrange ou Given)
+        $leilao = new Leilao('Fiat 147 0km');
+        $lucas = new Usuario('Lucas');
+        $joao = new Usuario('Joao');
+
+        $leilao->recebeLance(new Lance($joao, 2000));
+        $leilao->recebeLance(new Lance($lucas, 2500));
+
+        $leiloeiro = new Avaliador();
+
+        // A execução da regra de negócio (Act ou When)
+        $leiloeiro->avalia($leilao);
+
+        $menorValor = $leiloeiro->getMenorValor();
+
+        // A verificação do resultado (Assert ou Then)
+        self::assertEquals(2000, $menorValor); //verifica se dois valores são iguais
     }
 }
